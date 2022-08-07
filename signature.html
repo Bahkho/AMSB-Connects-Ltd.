@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signature Pad</title>
+    <script src = "/Js/jquery.js"></script>
+    <script src = "/Js/jSignature.min.js"></script>
+    <script src = "/Js/modernizr.js"></script>
+  </head>
+  <body>
+    <div id = "signature" style = "border: 1px solid black;">
+
+    </div>
+
+    <button type = "button" id = "preview">Send</button>
+
+    <img src = "" id = "signaturePreview">
+
+
+    <script type="text/javascript">
+      var signature = $("#signature").jSignature({'UndoButton':true});
+
+      $('#preview').click(function(){
+        var data = signature.jSignature('getData', 'image');
+        $('#signaturePreview').attr('src', "data:" + data);
+      });
+
+      $('#download').click(function(){
+        var image = $('#signaturePreview')[0];
+        this.href = image.src;
+      });
+    </script>
+  </body>
+</html>
+
